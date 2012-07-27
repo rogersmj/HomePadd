@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>HousePad</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.1.1.min.js"></script>
+	<link rel="stylesheet"  href="css/jquery.mobile-1.1.1.css" />
+	<link rel="stylesheet" href="css/housepad.css" />
+	
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		var pages = $("div[data-role=page]").each(function(e) {
+			var name = $(e).attr("id");
+			$(".main-nav").append("<li><a href='#"+name+"'>"+name+"</a></li>");
+		});
+		$(".main-nav").listview('refresh');
+	});
+		
+	</script>
+	
+</head>
+<body>
+	
+	
+<div data-role="page" id="home">
+	<div data-role="header">
+		<h1>My Title</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content" role="main">
+		
+		<div class="content-primary">
+			
+		Home page
+		</div><!-- /page -->
+
+		<div class="content-secondary">
+			<ul data-role="listview" data-inset="true" class="main-nav">
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+<div data-role="page" id="Rooms">
+	<div data-role="header">
+		<h1>Rooms</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content" role="main">
+		
+		<div class="content-primary">
+			Rooms page
+			
+		</div><!-- /page -->
+
+		<div class="content-secondary">
+			<ul data-role="listview" data-inset="true" class="main-nav">
+			</ul>
+		</div>
+		
+	</div>
+</div>
+		
+
+		
+
+	
+	
+</body>

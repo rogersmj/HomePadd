@@ -1,0 +1,15 @@
+.content-primary {
+	width: 60%;
+	padding: 1.5em 6% 3em 0;
+	margin: 0;
+	float: right;
+}
+
+.content-secondary {
+	text-align: left;
+	float: left;
+	width: 30%;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
