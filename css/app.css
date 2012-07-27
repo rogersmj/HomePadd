@@ -1,0 +1,12 @@
+.status-control-group .ui-block-a, .status-control-group .ui-block-c {
+	margin: 1.2em 0em 0 0;
+}
+
+.status-control-group span.status {
+	float: right;
+	margin-right: 1em;
+}
+
+
+/*General text styles*/
+.red { color: #FF3333; font-weight: bold; }
