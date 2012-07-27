@@ -1,86 +1,167 @@
 <!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>HousePad</title>
-	<script src="js/jquery.js"></script>
-	<script src="js/jquery.mobile-1.1.1.min.js"></script>
-	<link rel="stylesheet"  href="css/jquery.mobile-1.1.1.css" />
-	<link rel="stylesheet" href="css/housepad.css" />
-	
-	<script type="text/javascript" charset="utf-8">
-	
-	// Dynamically generate the navigation lists
-	function navInit() {
-		$("div[data-role=page]").each(function(index, e) {
-			var id = $(e).attr("id");
-			var title = $(e).find("h1:eq(0)").html();
-			$(".main-nav").append("<li><a href='#"+id+"'>"+title+"</a></li>");
-		});
-	}
-	
-	// Update nav list style after they've been generated
-	$(document).live('pageinit', function(e) {
-		$("ul.main-nav li").removeClass("ui-btn-active");
-		var current_id = $("div[data-role=page]:visible").attr("id");
-		$("div[data-role=page]:visible ul.main-nav").find("a[id="+current_id+"]").parent("li").addClass("ui-btn-active");
-		
-		$("div[data-role=page]:visible ul.main-nav").listview('refresh');
-		
-	});
-		
-	</script>
-	
-</head>
-<body>
-	
-	
-<div data-role="page" id="home">
-	<div data-role="header">
-		<h1>Home</h1>
-	</div><!-- /header -->
-	
-	<div data-role="content" class="ui-content">
-		
-		<div class="content-primary">
-			
-		Home page
-		</div><!-- /page -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 
-		<div class="content-secondary">
-			<ul data-role="listview" data-inset="true" class="main-nav">
-			</ul>
-		</div>
-		
-	</div>
-</div>
+		<title>HousePad</title>
 
-<div data-role="page" id="rooms">
-	<div data-role="header">
-		<h1>Rooms</h1>
-	</div><!-- /header -->
+		<link rel="stylesheet"  href="css/jquery.mobile-1.1.1.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.1.1.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.splitview.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.scrollview.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.grids.collapsible.css" />
+		<link rel="stylesheet" href="css/app.css" />
+
+
+		<script src="js/jquery.js"></script>
+
+		<script type="text/javascript">
+			$(document).bind("mobileinit", function(){
+				$.extend($.mobile, {
+					//apply overrides here
+					defaultPageTransition: "slide",
+					defaultDialogTransition: "pop"
+				});
+
+				$.mobile.page.prototype.options.contentTheme = "a";
+			});
+		</script>
+
+		<script src="js/jquery.mobile.splitview.js"></script>
+		<script src="js/jquery.mobile.js"></script>
+		<script src="js/jquery.mobile.scrollview.js"></script>
+
+		<script type="text/javascript">
+			$(document).bind("pageinit", function() {
+				$("div[data-id=menu] a[data-panel=main]").attr("data-transition", "fade");
+			});
+		</script>
+
+	</head>
+	<body>
+		<div data-role="panel" data-id="menu" data-hash="crumbs" data-context="a#default">
+			<!-- Start of first page -->
+			<div data-role="page" id="main" data-hash="false">
+				<div data-role="header">
+					<h1>
+						Rogers House
+					</h1>
+				</div><!-- /header -->
+				<div data-role="content">
+					<ul data-role="listview">
+						<li>
+							<a href="#home" data-panel="main" id="default">Home</a>
+						</li>
+						<li>Lighting
+							<ul>
+								<li>
+									<a href="#lighting-floor1" data-panel="main">Floor 1</a>
+								</li>
+								<li>
+									<a href="#lighting-floor2" data-panel="main">Floor 2</a>
+								</li>
+								<li>
+									<a href="#lighting-exterior" data-panel="main">Exterior</a>
+								</li>
+							</ul>
+						</li>
+						<li>Cameras
+							<ul>
+								<li>
+									<a href="#panels" data-panel="main">Panels</a>
+								</li>
+								<li>
+									<a href="#orientation" data-panel="main">Orientation</a>
+								</li>
+								<li>
+									<a href="#scroll" data-panel="main">Scroll</a>
+								</li>
+								<li>
+									<a href="#context" data-panel="main">Context Pages</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /content -->
+			</div><!-- /page -->
+		</div><!-- panel menu -->
+
+		
+<!-- ====================================================================================================== 
+		END MENU
+		START MAIN PANELS
+========================================================================================================== -->
+
+	    <div data-role="panel" data-id="main">
+		
+			<!-- Start of Home page -->
+			<div data-role="page" id="home">
+
+				<div data-role="header">
+					<h1>Welcome Home</h1>
+				</div><!-- /header -->
+
+				<div data-role="content"> 
+					<form action="#" method="post">
+					<div>
+						<h2>First floor lights</h2>
+	 					<fieldset data-role="controlgroup" data-type="horizontal">
+	 						<label for="floor-1-scenes-choice-1">All off</label>
+	 						<input type="radio" name="floor-1-scenes" id="floor-1-scenes-choice-1" value="1" />
+
+	 						<label for="floor-1-scenes-choice-2">Morning</label>
+	 						<input type="radio" name="floor-1-scenes" id="floor-1-scenes-choice-2" value="2" />
+
+	 						<label for="floor-1-scenes-choice-3">Dinner</label>
+	 						<input type="radio" name="floor-1-scenes" id="floor-1-scenes-choice-3" value="3" />
+
+	 						<label for="floor-1-scenes-choice-4">Evening</label>
+	 						<input type="radio" name="floor-1-scenes" id="floor-1-scenes-choice-4" value="4" checked="checked" />
+
+	 						<label for="floor-1-scenes-choice-5">All on</label>
+	 						<input type="radio" name="floor-1-scenes" id="floor-1-scenes-choice-5" value="5">
+
+	 					</fieldset>
+					</div>
+ 					
+ 					
+ 					<div class="ui-grid-a">
+						<!-- <div class="ui-block-a">
+							<h2>Double Garage</h2>
+							<a href="#" data-role="button">Close</a>
+						</div>
+						<div class="ui-block-b">
+							<h2>Single Garage</h2>
+							<a href="#" data-role="button">Close</a>
+						</div> -->
+					</div><!-- /grid-a -->
+
+					</form>
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-id="ew-footer" class="ui-splitview-hidden">
+
+				</div><!-- /footer -->
+			</div><!-- /page -->
 	
-	<div data-role="content" class="ui-content">
-		
-		<div class="content-primary">
-			Rooms page
-			
-		</div><!-- /page -->
+			<!-- Start of 1st floor lighting page -->
+			<div data-role="page" id="lighting-floor1">
 
-		<div class="content-secondary">
-			<ul data-role="listview" data-inset="true" class="main-nav">
-			</ul>
-		</div>
-		
-	</div>
-</div>
-		
+				<div data-role="header">
+					<h1>1st floor lighting</h1>
+				</div><!-- /header -->
 
-		
+				<div data-role="content"> 
+					Lighting content
+				</div><!-- /content -->
 
+				<div data-role="footer" data-position="fixed" data-id="ew-footer" class="ui-splitview-hidden">
+
+				</div><!-- /footer -->
+			</div><!-- /page -->
 	
-<script type="text/javascript" charset="utf-8">
-	navInit();
-</script>
-</body>
+		</div><!-- /panel main -->
+
+	</body>
+</html>
