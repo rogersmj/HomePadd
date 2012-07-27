@@ -10,12 +10,24 @@
 	<link rel="stylesheet" href="css/housepad.css" />
 	
 	<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-		var pages = $("div[data-role=page]").each(function(e) {
-			var name = $(e).attr("id");
-			$(".main-nav").append("<li><a href='#"+name+"'>"+name+"</a></li>");
+	
+	// Dynamically generate the navigation lists
+	function navInit() {
+		$("div[data-role=page]").each(function(index, e) {
+			var id = $(e).attr("id");
+			var title = $(e).find("h1:eq(0)").html();
+			$(".main-nav").append("<li><a href='#"+id+"'>"+title+"</a></li>");
 		});
-		$(".main-nav").listview('refresh');
+	}
+	
+	// Update nav list style after they've been generated
+	$(document).live('pageinit', function(e) {
+		$("ul.main-nav li").removeClass("ui-btn-active");
+		var current_id = $("div[data-role=page]:visible").attr("id");
+		$("div[data-role=page]:visible ul.main-nav").find("a[id="+current_id+"]").parent("li").addClass("ui-btn-active");
+		
+		$("div[data-role=page]:visible ul.main-nav").listview('refresh');
+		
 	});
 		
 	</script>
@@ -26,10 +38,10 @@
 	
 <div data-role="page" id="home">
 	<div data-role="header">
-		<h1>My Title</h1>
+		<h1>Home</h1>
 	</div><!-- /header -->
 	
-	<div data-role="content" class="ui-content" role="main">
+	<div data-role="content" class="ui-content">
 		
 		<div class="content-primary">
 			
@@ -44,12 +56,12 @@
 	</div>
 </div>
 
-<div data-role="page" id="Rooms">
+<div data-role="page" id="rooms">
 	<div data-role="header">
 		<h1>Rooms</h1>
 	</div><!-- /header -->
 	
-	<div data-role="content" class="ui-content" role="main">
+	<div data-role="content" class="ui-content">
 		
 		<div class="content-primary">
 			Rooms page
@@ -68,5 +80,7 @@
 		
 
 	
-	
+<script type="text/javascript" charset="utf-8">
+	navInit();
+</script>
 </body>
