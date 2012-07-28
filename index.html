@@ -154,6 +154,9 @@
 					</div>
 
 				</div>
+
+
+				
 			</div>
 			<div class="ui-block-b">
 				
@@ -177,18 +180,34 @@
 
 						<div class="ui-grid-b">
 							<div class="ui-block-a">
-								<a href="#" data-role="button">5-day</a>
+								<a href="#forecast" data-role="button" data-rel="dialog">5-day</a>
 							</div>
 							<div class="ui-block-b">
-								<a href="#" data-role="button">Radar</a>
+								<a href="#radar" data-role="button" data-rel="dialog">Radar</a>
 							</div>
 							<div class="ui-block-c">
-								<a href="#" data-role="button" data-icon="alert">Alerts</a>
+								<a href="#alerts" data-role="button" data-icon="alert" data-rel="dialog">Alerts</a>
 							</div>
 						</div>
 					</div>
 					
+				</div> <!-- /weather -->
+
+				
+				<div data-role="collapsible-set"  data-inset="false" class="cameras">
+
+					<div data-role="collapsible" data-collapsed="false">
+					<h3>Driveway</h3>
+					<p><img src="images/camera-driveway.jpg" width="350" /></p>
+					</div>
+					
+					<div data-role="collapsible">
+					<h3>Nursery</h3>
+					<p><img src="images/camera-driveway.jpg" width="350" /></p>
+					</div>
+					
 				</div>
+
 			</div>	   
 		</div>
 		
@@ -246,11 +265,63 @@ Dialogs
 				</select>
 			</div>
 		</div>
-
-
-			
-			
 				
+	</div>
+</div>
+
+<div data-role="page" id="forecast">
+	<div data-role="header">
+		<h1>5-day forecast</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content">
+		<div class="ui-grid-d weather">
+			<div class="ui-block-a">
+				<img src="weather/cloudy1.png" height="64" width="64" alt="Mostly Sunny" />
+				<h4><span>H</span> 86 <span>/ L</span> 62</h4>
+				<h4><span>Precip</span> 30<span>%</span></h4>
+			</div>
+			<div class="ui-block-b">
+				<img src="weather/cloudy1.png" height="64" width="64" alt="Mostly Sunny" />
+				<h4><span>H</span> 86 <span>/ L</span> 62</h4>
+				<h4><span>Precip</span> 30<span>%</span></h4>
+			</div>
+			<div class="ui-block-c">
+				<img src="weather/cloudy1.png" height="64" width="64" alt="Mostly Sunny" />
+				<h4><span>H</span> 86 <span>/ L</span> 62</h4>
+				<h4><span>Precip</span> 30<span>%</span></h4>
+			</div>
+			<div class="ui-block-d">
+				<img src="weather/cloudy1.png" height="64" width="64" alt="Mostly Sunny" />
+				<h4><span>H</span> 86 <span>/ L</span> 62</h4>
+				<h4><span>Precip</span> 30<span>%</span></h4>
+			</div>
+			<div class="ui-block-e">
+				<img src="weather/cloudy1.png" height="64" width="64" alt="Mostly Sunny" />
+				<h4><span>H</span> 86 <span>/ L</span> 62</h4>
+				<h4><span>Precip</span> 30<span>%</span></h4>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div data-role="page" id="radar">
+	<div data-role="header">
+		<h1>Radar</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content">
+		Radar content	
+	</div>
+</div>
+
+<div data-role="page" id="alerts">
+	<div data-role="header">
+		<h1>Weather alerts</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content">
+		Alert content	
 	</div>
 </div>
 
