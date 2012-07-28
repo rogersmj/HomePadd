@@ -1,3 +1,20 @@
+/*General text styles*/
+.red { color: #FF3333; font-weight: bold; }
+h2 {margin: 2em 0 .5em 0;}
+
+.ui-grid-a > div {
+	min-width: 400px;
+	margin-right: -3em;
+	padding-right: 3em;
+}
+
+.ui-grid-a > div:last-child {
+	padding-right: 0;
+	margin-right: 0;
+}
+
+
+
 .status-control-group .ui-block-a, .status-control-group .ui-block-c {
 	margin: 1.2em 0em 0 0;
 }
@@ -8,5 +25,3 @@
 }
 
 
-/*General text styles*/
-.red { color: #FF3333; font-weight: bold; }
