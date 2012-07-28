@@ -1,6 +1,6 @@
 /*General text styles*/
 .red { color: #FF3333; font-weight: bold; }
-h2 {margin: 2em 0 .5em 0;}
+h2 {margin: 1em 0 .5em 0;}
 
 .ui-grid-a > div {
 	min-width: 400px;
@@ -11,7 +11,12 @@ h2 {margin: 2em 0 .5em 0;}
 .ui-grid-a > div:last-child {
 	padding-right: 0;
 	margin-right: 0;
+	text-align: right;
 }
+
+/*Form controls*/
+/*.containing-element .ui-slider-switch { width: 10em }
+.ui-field-contain div.ui-slider-switch { width: […]; }*/
 
 
 
