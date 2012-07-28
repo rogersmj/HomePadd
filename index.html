@@ -8,12 +8,14 @@
 
 	<link rel="stylesheet"  href="css/jquery.mobile-1.1.1.css" />
 	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile.grids.collapsible.css" /> -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.1.1.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.1.1.css" /> -->
-	<!-- <link rel="stylesheet" href="css/app.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.1.1.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.1.1.css" />
+	<link rel="stylesheet" href="css/app.css" />
 
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile-1.1.1.min.js"></script>
+	<script src="js/date.format.js"></script>
+	<script src="js/app.js"></script>
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -29,6 +31,14 @@
 
 	//Darkness is default
 	$.mobile.page.prototype.options.theme = "a";
+
+	//Initialize custom objects
+	$(document).bind("pageinit", function() {
+		setInterval(function() {
+			$(".showtime").html(currentTime());
+		});
+		$(".showdate").html(currentDate());
+	});
 	</script>
 
 	<script type="text/javascript">
@@ -56,57 +66,128 @@
 <div data-role="page" id="home">
 
 	<div data-role="header">
-		<h1>Rogers Home</h1>
+		<a href="#info" data-role="button" data-icon="info" data-rel="dialog">Info</a>
+		<h1 class="showdate"></h1>
+		<a href="#settings" data-role="button" data-icon="gear" data-rel="dialog">Settings</a>
 	</div><!-- /header -->
 	
 	<div data-role="content" class="ui-content">
 
-		<div class="ui-grid-a">
+		<div class="ui-grid-a ui-grid-main">
 			<div class="ui-block-a">
 				<h2>Select a scene</h2>
 				<form action="#" method="post">
-					<fieldset data-role="controlgroup">
-					     	<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+					<fieldset data-role="controlgroup" >
+					     	<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1"  />
 					     	<label for="radio-choice-1">Morning</label>
 
 					     	<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
 					     	<label for="radio-choice-2">Dinner</label>
 
-					     	<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+					     	<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3" checked="checked" />
 					     	<label for="radio-choice-3">Evening</label>
 
 					     	<input type="radio" name="radio-choice" id="radio-choice-4" value="choice-4"  />
-					     	<label for="radio-choice-4">Night</label>
+					     	<label for="radio-choice-4">Upstairs</label>
+
+					     	<input type="radio" name="radio-choice" id="radio-choice-5" value="choice-5"  />
+					     	<label for="radio-choice-5">Night</label>
 					</fieldset>
 				</form>
 
-				<h2>Exterior</h2>
+				<div class="containing-element">
 
-					<div class="ui-grid-a status-control-group">
-						<div class="ui-block-a">Garage (D)</div>
+					<div class="ui-grid-b grid-controls garage-controls">
+
+						<div class="ui-block-a"><h3>Garages</h3></div>
 						<div class="ui-block-b">
-							
+								<label for="flip-1">Garage (Dual)</label>
+								<select name="flip-1" id="flip-1" data-role="slider">
+									<option value="off">Closed</option>
+									<option value="on">Open</option>
+								</select> 
+						</div>
+						<div class="ui-block-c">
+								<label for="flip-2">Garage (Single)</label>
+								<select name="flip-2" id="flip-2" data-role="slider">
+									<option value="off">Closed</option>
+									<option value="on">Open</option>
+								</select>
 						</div>
 					</div>
 
-					<div class="ui-grid-c status-control-group">
-						<div class="ui-block-a">Garage (S)</div>
-						<div class="ui-block-b"></div>
-						<div class="ui-block-c"><span class="status">Closed</span></div>
-						<div class="ui-block-d"><a href="#" data-role="button">Open</a></div>
+				</div>
+				<div class="containing-element">
+
+					<div class="ui-grid-b grid-controls">
+
+						<div class="ui-block-a"><h3>Outside lights</h3></div>
+						<div class="ui-block-b">
+								<label for="flip-2">Front patio</label>
+								<select name="flip-2" id="flip-3" data-role="slider">
+									<option value="off">Off</option>
+									<option value="on">On</option>
+								</select> 
+						</div>
+						<div class="ui-block-c">
+								<label for="flip-4">Front accent</label>
+								<select name="flip-4" id="flip-4" data-role="slider">
+									<option value="off">Off</option>
+									<option value="on">On</option>
+								</select>
+						</div>
+						<div class="ui-block-a"></div>
+						<div class="ui-block-b">
+								<label for="flip-2">Rear patio</label>
+								<select name="flip-2" id="flip-3" data-role="slider">
+									<option value="off">Off</option>
+									<option value="on">On</option>
+								</select> 
+						</div>
+						<div class="ui-block-c">
+								<label for="flip-4">Rear accent</label>
+								<select name="flip-4" id="flip-4" data-role="slider">
+									<option value="off">Off</option>
+									<option value="on">On</option>
+								</select>
+						</div>
 					</div>
+
+				</div>
 			</div>
 			<div class="ui-block-b">
-				<div class="ui-grid-solo">
-					<form action="#" method="post">
-						<div data-role="fieldcontain">
-							<label for="flip-1">Select slider:</label>
-							<select name="flip-1" id="flip-1" data-role="slider">
-								<option value="off">Off</option>
-								<option value="on">On</option>
-							</select> 
+				
+				<div class="weather">
+					
+					<div class="weather-main ui-grid-solo">
+
+						<div class="weather-icon">
+							<img src="weather/cloudy1.png" alt="Mostly sunny" height="128" width="128" />
 						</div>
-					</form>
+						<h1 class="current_temp">78<span>&deg;</span></h1>
+						<div class="highlow">
+							<h4><span>High</span> 86</h4>
+							<h4><span>Low</span> 62</h4>
+							<h4><span>Precip</span> 30<span>%</span></h4>
+						</div>
+
+					</div>
+					
+					<div class="containing-element clear">
+
+						<div class="ui-grid-b">
+							<div class="ui-block-a">
+								<a href="#" data-role="button">5-day</a>
+							</div>
+							<div class="ui-block-b">
+								<a href="#" data-role="button">Radar</a>
+							</div>
+							<div class="ui-block-c">
+								<a href="#" data-role="button" data-icon="alert">Alerts</a>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>	   
 		</div>
@@ -127,6 +208,50 @@
 	</div>
 
 	<div data-role="footer" data-id="footer1" data-position="fixed"></div><!-- /footer -->
+</div>
+
+
+
+<!-- 
+=====================================================================
+Dialogs 
+===================================================================== 
+-->
+
+<div data-role="page" id="info">
+	<div data-role="header">
+		<h1>Info</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content">
+		Info content	
+	</div>
+</div>
+
+<div data-role="page" id="settings">
+	<div data-role="header">
+		<h1>Settings</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" class="ui-content">
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<label for="flip-vacation">Vacation mode</label>
+			</div>
+			<div class="ui-block-b">
+				<select name="flip-vacation" id="flip-vacation" data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</div>
+		</div>
+
+
+			
+			
+				
+	</div>
 </div>
 
 
